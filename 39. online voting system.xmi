@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmi:version="2.5">
+  <uml:Model xmi:type="uml:Model" name="Online Voting System">
+    <ownedDiagram>
+      <uml:ClassDiagram xmi:type="uml:ClassDiagram" name="Online Voting Classes">
+        <packagedElement xmi:type="uml:Package" name="OnlineVoting">
+          <ownedType xmi:type="uml:Class" name="Voter">
+            <ownedAttribute xmi:type="uml:Property" name="id" type="uml:String"/>
+            <ownedAttribute xmi:type="uml:Property" name="name" type="uml:String"/>
+            <ownedAttribute xmi:type="uml:Property" name="email" type="uml:String"/>
+            <ownedAttribute xmi:type="uml:Property" name="authenticated" type="uml:Boolean"/>
+            <ownedOperation xmi:type="uml:Operation" name="authenticate" parameter="password: uml:String"/>
+            <ownedOperation xmi:type="uml:Operation" name="vote" parameter="selection: uml:String"/>
+          </ownedType>
+          <ownedType xmi:type="uml:Class" name="Ballot">
+            <ownedAttribute xmi:type="uml:Property" name="id" type="uml:String"/>
+            <ownedAttribute xmi:type="uml:Property" name="open" type="uml:Boolean"/>
+            <ownedAttribute xmi:type="uml:Property" name="closeTime" type="uml:DateTime"/>
+            <ownedAttribute xmi:type="uml:Property" name="options" type="uml:String" aggregation="shared" multiplicity="*"/>
+            <ownedAttribute xmi:type="uml:Property" name="results" type="uml:Integer" aggregation="composite" multiplicity="*"/>
+            <ownedOperation xmi:type="uml:Operation" name="open"/>
+            <ownedOperation xmi:type="uml:Operation" name="close"/>
+            <ownedOperation xmi:type="uml:Operation" name="addOption" parameter="option: uml:String"/>
+            <ownedOperation xmi:type="uml:Operation" name="removeOption" parameter="option: uml:String"/>
+          </ownedType>
+          <ownedType xmi:type="uml:Class" name="VotingSystem">
+            <ownedAttribute xmi:type="uml:Property" name="ballots" type="Ballot" aggregation="shared" multiplicity="*"/>
+            <ownedOperation xmi:type="uml:Operation" name="createBallot" parameter="name: uml:String, closeTime: uml:DateTime, options: uml:String[]"/>
+            <ownedOperation xmi:type="uml:Operation" name="removeBallot" parameter="ballot: Ballot"/>
+            <ownedOperation xmi:type="uml:Operation" name="tallyResults" parameter="ballot: Ballot"/>
+          </ownedType>
+        </packagedElement>
+      </uml:ClassDiagram>
+    </ownedDiagram>
+  </uml:Model>
+</XMI>

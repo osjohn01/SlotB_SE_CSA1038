@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmi:version="2.5">
+  <uml:Model xmi:type="uml:Model" name="Security Management System">
+    <ownedDiagram>
+      <uml:ClassDiagram xmi:type="uml:ClassDiagram" name="Security Classes">
+        <packagedElement xmi:type="uml:Package" name="Security">
+          <ownedType xmi:type="uml:Class" name="SecurityPerson">
+            <ownedAttribute xmi:type="uml:Property" name="id" type="uml:String"/>
+            <ownedAttribute xmi:type="uml:Property" name="name" type="uml:String"/>
+            <ownedAttribute xmi:type="uml:Property" name="assignedDuties" type="uml:DateTime" aggregation="shared" multiplicity="*"/>
+            <ownedAttribute xmi:type="uml:Property" name="numberOfLeaves" type="uml:Integer"/>
+            <ownedOperation xmi:type="uml:Operation" name="addDuty" parameter="dateTime: uml:DateTime"/>
+            <ownedOperation xmi:type="uml:Operation" name="removeDuty" parameter="dateTime: uml:DateTime"/>
+          </ownedType>
+          <ownedType xmi:type="uml:Class" name="Duty">
+            <ownedAttribute xmi:type="uml:Property" name="date" type="uml:Date"/>
+            <ownedAttribute xmi:type="uml:Property" name="startTime" type="uml:Time"/>
+            <ownedAttribute xmi:type="uml:Property" name="endTime" type="uml:Time"/>
+            <ownedAttribute xmi:type="uml:Property" name="place" type="uml:String"/>
+          </ownedType>
+          <ownedType xmi:type="uml:Class" name="SecurityManager">
+            <ownedAttribute xmi:type="uml:Property" name="securityPersonnel" type="SecurityPerson" aggregation="shared" multiplicity="*"/>
+            <ownedOperation xmi:type="uml:Operation" name="assignDuty" parameter="securityPerson: SecurityPerson, duty: Duty"/>
+            <ownedOperation xmi:type="uml:Operation" name="removeDuty" parameter="securityPerson: SecurityPerson, duty: Duty"/>
+            <ownedOperation xmi:type="uml:Operation" name="paySecurityPersonnel"/>
+          </ownedType>
+        </packagedElement>
+      </uml:ClassDiagram>
+    </ownedDiagram>
+  </uml:Model>
+</XMI>
